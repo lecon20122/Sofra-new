@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Lemonada:wght@600&family=Markazi+Text:wght@700&family=Ubuntu:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Changa:wght@600&display=swap");
+
+.nav-background {
+    background-color: #e16036;
+}
+.btn {
+    display: revert !important ;
+}
+.btn .btn-outline-light:hover {
+    color: #000 !important;
+}
+.font-size {
+    font-size: 20px;
+}
+.font-size-brand {
+    font-size: 40px;
+    /* font-family: 'Markazi Text', serif; */
+    /* font-family: 'Lemonada', cursive; */
+    font-family: "Changa", sans-serif;
+}
+.half-page {
+    min-height: 50vh;
+    background-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3)
+        ),
+        url("../images/2547baa611d7ee25cde62746029226c3-w2880-d9.jpg");
+    background-position: center;
+    background-size: cover;
+}
+.hero-box {
+    position: absolute;
+    left: 50%;
+    top: 33%;
+    transform: translate(-50%, -50%);
+}
+.hero-box h1 {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: whitesmoke;
+    font-size: 250%;
+    font-weight: 1;
+    word-spacing: 3px;
+    font-family: "Changa", sans-serif;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.hero-box::placeholder {
+    font-family: "Changa", sans-serif;
+}
+.hero-box button {
+    background-color: #e16036 !important ;
+    border-color: white !important ;
+}
+
+.search {
+    border: 2px solid #cf5c3f;
+    overflow: auto;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.search input[type="text"] {
+    border: 0px;
+    width: 67%;
+    padding: 10px 10px;
+}
+
+.search input[type="text"]:focus {
+    outline: 0;
+}
+
+.search input[type="submit"] {
+    border: 0px;
+    background: none;
+    background-color: #cf5c3f;
+    color: #fff;
+    float: right;
+    padding: 5px;
+    border-radius-top-right: 5px;
+    -moz-border-radius-top-right: 5px;
+    -webkit-border-radius-top-right: 5px;
+    border-radius-bottom-right: 5px;
+    -moz-border-radius-bottom-right: 5px;
+    -webkit-border-radius-bottom-right: 5px;
+    cursor: pointer;
+}
+
+/* ===========================
+   ====== Medua Query for Search Box ======
+   =========================== */
+
+@media only screen and (min-width: 150px) and (max-width: 780px) {
+
+    .search {
+        width: 95%;
+        margin: 0 auto;
+    }
+}
+.padding-search {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+}
+.form-control {
+    height: auto !important;
+}
