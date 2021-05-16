@@ -25,4 +25,10 @@ Route::group( ['middleware'=> 'jwt.auth'] , function () {
  Route::post('profile' , 'App\Http\Controllers\Auth\AuthController@profile');
 });
 
+//Restaurant-Resources
+Route::get('restaurants', 'App\Http\Controllers\Restaurant\IndexController@index');
+//Restaurant-Search
+Route::get('search', 'App\Http\Controllers\Restaurant\SearchController@search');
+//Restaurant-result
+Route::get('restaurant', 'App\Http\Controllers\Restaurant\IndexController@show');
 

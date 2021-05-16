@@ -37,7 +37,6 @@ export const profile = ({ },{payload , context}) => {
 export const logout = ({ dispatch }) => {
     return axios.post('api/logout').then((response) => {
         dispatch('clearAuth')
-
     })
 }
 

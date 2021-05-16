@@ -3,7 +3,11 @@
         <nav class="navbar navbar-expand-lg navbar-light nav-background">
             <div class="container sm">
                 <a class="navbar-brand">
-                    <router-link class="text-white font-size-brand text-decoration-none" :to="{ name: 'Home' }">سفرة</router-link></a
+                    <router-link
+                        class="text-white font-size-brand text-decoration-none"
+                        :to="{ name: 'Home' }"
+                        >سفرة</router-link
+                    ></a
                 >
                 <button
                     class="navbar-toggler"
@@ -15,28 +19,37 @@
                     aria-label="Toggle navigation"
                 >
                     <span class="navbar-toggler-icon"></span>
-                </button> 
+                </button>
                 <div
                     class="collapse navbar-collapse"
                     id="navbarSupportedContent"
                 >
                     <ul class="navbar-nav ml-auto ">
-                        <div
-                            class="navbar-nav"
-                            v-if="
-                                user.authenticated || restaurants.authenticated
-                            "
-                        >
+                        <div class="navbar-nav">
+                            <li class="nav-item active font-size">
+                                <a class="nav-link"
+                                    ><router-link
+                                        class="text-white text-decoration-none"
+                                        :to="{ name: 'Restaurants' }"
+                                        >كل المطاعم</router-link
+                                    ></a
+                                >
+                            </li>
+                        </div>
+                        <div class="navbar-nav" v-if="user.authenticated">
+
                             <li class="nav-item active">
                                 <a class="nav-link"
-                                    ><router-link class="text-white" :to="{ name: 'Timeline' }"
+                                    ><router-link
+                                        class="text-white"
+                                        :to="{ name: 'Timeline' }"
                                         >Timeline</router-link
                                     ></a
                                 >
                             </li>
                             <li class="nav-item dropdown">
                                 <a
-                                    class="nav-link dropdown-toggle"
+                                    class="nav-link dropdown-toggle text-white"
                                     href="#"
                                     id="navbarDropdown"
                                     role="button"
@@ -44,11 +57,7 @@
                                     aria-haspopup="true"
                                     aria-expanded="false"
                                 >
-                                    {{
-                                        user.data.name
-                                            ? user.data.name
-                                            : restaurants.data.name
-                                    }}
+                                    {{ user.data.name }}
                                 </a>
                                 <div
                                     class="dropdown-menu"
@@ -71,25 +80,23 @@
                         </div>
                         <div
                             class="navbar-nav font-size"
-                            v-if="
-                                !user.authenticated ||
-                                    !restaurants.authenticated
-                            "
+                            v-if="!user.authenticated"
                         >
                             <li class="nav-item active">
-                                <a class="nav-link text-white">All Restaurants</a>
-                            </li>
-                            <li class="nav-item active">
                                 <a class="nav-link"
-                                    ><router-link  class="btn btn-outline-light btn-lg" :to="{ name: 'Login' }"
-                                        >Login</router-link
+                                    ><router-link
+                                        class="btn btn-outline-light btn-lg"
+                                        :to="{ name: 'Login' }"
+                                        >تسجيل الدخول</router-link
                                     ></a
                                 >
                             </li>
                             <li class="nav-item active">
                                 <a class="nav-link"
-                                    ><router-link class="text-white text-decoration-none" :to="{ name: 'Register' }"
-                                        >Register</router-link
+                                    ><router-link
+                                        class="text-white text-decoration-none"
+                                        :to="{ name: 'Register' }"
+                                        > سجل الان</router-link
                                     ></a
                                 >
                             </li>
@@ -109,7 +116,6 @@ export default {
     computed: {
         ...mapGetters({
             user: "auth/user",
-            restaurants: "restaurants/user"
         })
     },
     methods: {

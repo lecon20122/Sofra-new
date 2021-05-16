@@ -1,6 +1,10 @@
 export default {
-    user: {
-        authenticated: false,
-        data: null
+    restaurant: {
+        data: null,
+        meta: null,
+        links: null,
+    },
+    restaurantByID: {
+        data: null,
     }
 }

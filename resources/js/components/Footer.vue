@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Footer -->
-        <footer class="page-footer font-small unique-color-dark" style="background-color: #000;">
+        <footer class="footer">
             <div style="background-color: #e16036;">
                 <div class="container">
                     <!-- Grid row-->
@@ -51,15 +51,21 @@
             </div>
 
             <!-- Footer Links -->
-            <div class="container text-center text-md-left mt-5">
+            <div
+                class="container text-center text-md-left mt-5"
+            >
                 <!-- Grid row -->
                 <div class="row mt-3">
                     <!-- Grid column -->
-                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text-white">
+                    <div
+                        class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text-white d-none d-md-block"
+                    >
                         <!-- Content -->
-                        <h6 class="text-uppercase font-weight-bold">
-                            Company name
-                        </h6>
+                        <h4 class="text-uppercase font-weight-bold font-size-brand">
+                            سفرة
+                        </h4>
+
+
                         <hr
                             class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
                             style="width: 60px;"
@@ -73,7 +79,9 @@
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 text-white">
+                    <div
+                        class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 text-white d-none d-md-block"
+                    >
                         <!-- Links -->
                         <h6 class="text-uppercase font-weight-bold">
                             Products
@@ -92,13 +100,17 @@
                             <a href="#!" class="text-white">BrandFlow</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-white">Bootstrap Angular</a>
+                            <a href="#!" class="text-white"
+                                >Bootstrap Angular</a
+                            >
                         </p>
                     </div>
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 text-white">
+                    <div
+                        class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 text-white d-none d-lg-block"
+                    >
                         <!-- Links -->
                         <h6 class="text-uppercase font-weight-bold">
                             Useful links
@@ -111,7 +123,9 @@
                             <a href="#!" class="text-white">Your Account</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-white">Become an Affiliate</a>
+                            <a href="#!" class="text-white"
+                                >Become an Affiliate</a
+                            >
                         </p>
                         <p>
                             <a href="#!" class="text-white">Shipping Rates</a>
@@ -150,7 +164,7 @@
             <!-- Footer Links -->
 
             <!-- Copyright -->
-            <div class="footer-copyright text-center py-3">
+            <div class="footer-copyright text-center py-3 bg-black">
                 © 2020 Copyright:
                 <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
             </div>

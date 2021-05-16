@@ -20,11 +20,6 @@ class CreateForeignKeys extends Migration {
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('restaurants', function(Blueprint $table) {
-			$table->foreign('district_id')->references('id')->on('districts')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
 		Schema::table('products', function(Blueprint $table) {
 			$table->foreign('restaurant_id')->references('id')->on('restaurants')
 						->onDelete('restrict')
@@ -69,9 +64,6 @@ class CreateForeignKeys extends Migration {
 		});
 		Schema::table('categories', function(Blueprint $table) {
 			$table->dropForeign('categories_parent_id_foreign');
-		});
-		Schema::table('restaurants', function(Blueprint $table) {
-			$table->dropForeign('restaurants_district_id_foreign');
 		});
 		Schema::table('products', function(Blueprint $table) {
 			$table->dropForeign('products_restaurant_id_foreign');

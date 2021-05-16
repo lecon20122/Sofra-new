@@ -27,7 +27,7 @@ export const login = ({ dispatch }, { payload, context }) => {
     })
 }
 
-export const profile = ({ },{payload , context}) => {
+export const profile = ({ }, { payload, context }) => {
     return axios.post('api/profile', payload).then((response) => {
         context.message = response.data.message
     }).catch((error) => {
@@ -39,6 +39,35 @@ export const logout = ({ dispatch }) => {
         dispatch('clearAuth')
     })
 }
+
+export const restaurants = ({ commit }) => {
+    return axios.get('api/restaurants').then((response) => {
+        commit('setRestaurantData', response.data.data)
+        commit('setRestaurantMeta', response.data.meta)
+        commit('setRestaurantLinks', response.data.links)
+    })
+}
+
+export const restaurant = ({ commit } , { payload}) => {
+    return axios.get('api/restaurant/', {
+        params: {
+            id : payload.id
+        }
+    }).then((response) => {
+        commit('setrestaurantByID', response.data.data)
+        // console.log(response.data.data);
+    })
+}
+
+export const restaurantsPaginate = ({ commit }, { payload }) => {
+    return axios.get('api/restaurants?page=' + payload.page).then((response) => {
+        commit('setRestaurantData', response.data.data)
+        commit('setRestaurantMeta', response.data.meta)
+        commit('setRestaurantLinks', response.data.links)
+    })
+}
+
+
 
 export const fetchUser = ({ commit }) => {
     return axios.get('api/restaurant-me').then((response) => {

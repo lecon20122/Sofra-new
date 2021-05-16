@@ -16,12 +16,13 @@ class CreateRestaurantsTable extends Migration {
 			$table->string('phone');
 			$table->string('password');
 			$table->string('image')->nullable();
-			$table->decimal('delivery_fees', 8,2)->nullable();
+			$table->string('address');
+			$table->string('slug');
+			$table->integer('delivery_fees')->nullable();
 			$table->decimal('min_order', 8,2)->nullable();
 			$table->boolean('is_active')->default(1);
 			$table->boolean('is_approved')->default(0);
             $table->integer('pin_code')->unsigned()->nullable();
-			$table->integer('district_id')->unsigned()->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});

@@ -12,10 +12,10 @@ class CreateProductsTable extends Migration {
 		Schema::create('products', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('name');
-			$table->text('short_describtion');
+			$table->text('short_description');
 			$table->string('image');
 			$table->decimal('price', 8,2);
-			$table->decimal('offer', 8,2);
+			$table->decimal('offer', 8,2)->nullable();
 			$table->string('ready_in');
             $table->integer('restaurant_id')->unsigned();
             $table->timestamps();

@@ -14,3 +14,15 @@ export const setAuthenticated = (state, trueOrFalse) => {
 export const setUserData = (state, userData) => {
     state.user.data = userData
 }
+export const setRestaurantData = (state, RestaurantData) => {
+    state.restaurant.data = RestaurantData
+}
+export const setRestaurantMeta = (state, RestaurantMeta) => {
+    state.restaurant.meta = RestaurantMeta
+}
+export const setRestaurantLinks = (state, RestaurantLinks) => {
+    state.restaurant.links = RestaurantLinks
+}
+export const setrestaurantByID = (state, RestaurantLinks) => {
+    state.restaurantByID.data = RestaurantLinks
+}

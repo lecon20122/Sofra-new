@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
         <title>Sofra</title>
     </head>
-    <body>
+    <body >
     <div id="app">
         <div>
             <application></application>

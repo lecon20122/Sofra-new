@@ -1,4 +1,4 @@
-import { login, register ,profile } from '../components';
+import { login, register, profile, index , restaurant } from '../components';
 
 export default [
     {
@@ -28,6 +28,25 @@ export default [
         meta: {
             guest: false,
             needsAuth: true,
+        },
+    },
+    {
+        path: '/restaurants',
+        component: index,
+        name: 'Restaurants',
+        meta: {
+            guest: false,
+            needsAuth: false,
+        }
+    },
+    {
+        path: '/restaurant/:id/:slug',
+        props : true,
+        component: restaurant,
+        name: 'Restaurant',
+        meta: {
+            guest: false,
+            needsAuth: false,
         }
     }
 ]

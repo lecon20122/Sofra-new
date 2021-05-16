@@ -35,6 +35,7 @@ window.Vue = require('vue').default;
 Vue.component('application', require('./components/App.vue').default);
 Vue.component('navbar', require('./components/Navbar.vue').default);
 Vue.component('footer-bar', require('./components/Footer.vue').default);
+Vue.component('pagination', require('./components/PaginationComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class Restaurant extends Authenticatable implements JWTSubject
@@ -16,7 +19,7 @@ class Restaurant extends Authenticatable implements JWTSubject
     protected $table = 'restaurants';
     public $timestamps = true;
 
-    use SoftDeletes, Notifiable;
+    use SoftDeletes, Notifiable, HasFactory;
     protected $hidden = [
         'password',
         'remember_token',
@@ -59,7 +62,7 @@ class Restaurant extends Authenticatable implements JWTSubject
     {
         return $this->hasMany('App\Models\Review');
     }
-        ////////////MORPH///////////
+    ////////////MORPH///////////
     /**
      * Get all of the tags for the post.
      */
@@ -71,7 +74,7 @@ class Restaurant extends Authenticatable implements JWTSubject
     {
         return $this->morphMany('App\Models\Notification', 'notificationable');
     }
-        ////////////MORPH///////////
+    ////////////MORPH///////////
 
 
 
@@ -92,4 +95,14 @@ class Restaurant extends Authenticatable implements JWTSubject
         return [];
     }
 
+    function scopeApproved(Builder $collection = null)
+    {
+        $collection->where('is_approved' , true);
+    }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
+    }
 }
