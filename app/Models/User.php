@@ -53,6 +53,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->morphMany('App\Models\Notification', 'notificationable');
     }
 
+    public function carts()
+    {
+        return $this->hasMany('App\Models\Cart');
+    }
+
 
     public function getJWTIdentifier()
     {

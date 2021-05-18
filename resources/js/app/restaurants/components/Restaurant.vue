@@ -2,7 +2,7 @@
     <div>
         <!-- <div class="container-lg"> -->
         <div class="row">
-            <div class="col-lg-12 mx-auto">
+            <div class="col-lg-12">
                 <!-- Profile widget -->
                 <div class="bg-white shadow rounded overflow-hidden">
                     <div class="px-4 pt-0 pb-4 cover">
@@ -11,15 +11,15 @@
                                 <img
                                     v-bind:src="restaurant.data.image"
                                     alt="..."
-                                    width="130"
+                                    width="150"
                                     class="rounded mb-2 img-thumbnail"
                                 />
                             </div>
                             <div class="media-body mb-5 text-white">
-                                <h4 class="mt-0 mb-0">
+                                <h2 class="mt-0 mb-0">
                                     {{ restaurant.data.name }}
-                                </h4>
-                                <p class="small mb-4">
+                                </h2>
+                                <p class="large mb-4">
                                     <i class="fas fa-map-marker-alt mr-2 text-danger"></i
                                     >{{ restaurant.data.address }}
                                 </p>
@@ -58,6 +58,7 @@
                         </div>
                     </div> -->
                     <div class="container-fluid py-3">
+                        <div class="container-fluid">
                         <ul
                             class="nav nav-pills mb-3"
                             id="pills-tab"
@@ -65,7 +66,7 @@
                         >
                             <li class="nav-item" role="presentation">
                                 <a
-                                    class="nav-link active"
+                                    class="nav-link active link"
                                     id="pills-menu-tab"
                                     data-toggle="pill"
                                     href="#pills-menu"
@@ -77,7 +78,7 @@
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a
-                                    class="nav-link"
+                                    class="nav-link link"
                                     id="pills-profile-tab"
                                     data-toggle="pill"
                                     href="#pills-profile"
@@ -89,7 +90,7 @@
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a
-                                    class="nav-link"
+                                    class="nav-link link"
                                     id="pills-contact-tab"
                                     data-toggle="pill"
                                     href="#pills-contact"
@@ -100,6 +101,7 @@
                                 >
                             </li>
                         </ul>
+                        </div>
                         <div class="tab-content" id="pills-tabContent">
                             <div
                                 class="tab-pane fade show active"
