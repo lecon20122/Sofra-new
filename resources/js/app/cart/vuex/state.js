@@ -1,3 +1,6 @@
 export default {
-    results: [],
+    cart: {
+        items: null,
+        delivery: null,
+    }
 }

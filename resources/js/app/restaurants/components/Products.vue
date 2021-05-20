@@ -4,7 +4,7 @@
             <div class="d-flex justify-content-center row">
                 <div class="col-md-10">
                     <div
-                        v-for="(product , index ) in products"
+                        v-for="(product, index) in products"
                         :key="product.id"
                         class="row p-2 bg-white border rounded"
                     >
@@ -32,7 +32,7 @@
                             </p>
                         </div>
                         <div
-                            class="align-items-center align-content-center col-md-3 border-left mt-1"
+                            class="align-items-center  align-content-center col-md-3 border-left border-right mt-1"
                         >
                             <div class="d-flex flex-row align-items-center">
                                 <h4 class="mr-1 pt-3">
@@ -43,40 +43,18 @@
                                 <i class="fa fa-clock"></i> Ready in
                                 {{ product.ready_in }} Minutes
                             </h6>
-                            <div class="d-flex flex-column mt-4">
-                                <form
-                                    @submit.prevent="submit(product.id)"
-                                    class="d-flex flex-column mt-4"
-                                >
-                                    <div class="col-lg-12 d-flex">
-                                        <div class="col-lg-3">
-                                            <input
-                                                type="number"
-                                                value="1"
-                                                name=""
-                                                id=""
-                                                class="form-control"
-                                                v-model="items.qty[index]"
-                                            />
-                                        </div>
-                                        <div class="col-lg-9">
-                                            <input
-                                                type="text"
-                                                placeholder="Notes"
-                                                name=""
-                                                id=""
-                                                class="form-control"
-                                                v-model="items.notes[index]"
-                                            />
-                                        </div>
-                                    </div>
-                                    <button
-                                        class="btn btn-success btn-lg mt-2"
-                                        type="submit"
-                                    >
-                                        Add to Cart
-                                    </button>
-                                </form>
+                            <div class="d-flex flex-column mt-5 pt-5">
+                                <VueLoadingButton
+                                    :styled="false"
+                                    type="submit"
+                                    class="btn btn-success"
+                                    :loading="isLoading"
+                                    @click.native="submit(product.id, index)"
+                                    ><span v-show="!done[index]"
+                                        ><i class="fa fa-cart-plus"></i></span
+                                    ><span v-show="done[index]"
+                                        >Added <i class="fa fa-check"></i></span
+                                ></VueLoadingButton>
                             </div>
                         </div>
                     </div>
@@ -86,23 +64,47 @@
     </div>
 </template>
 <script>
+import { mapActions, mapGetters } from "vuex";
+import VueLoadingButton from "vue-loading-button";
+
 export default {
+    components: {
+        VueLoadingButton
+    },
     props: ["products"],
     data() {
         return {
-            items: {
-                productID: null,
-                qty: [],
-                notes: [],
-            }
+            productID: null,
+            isLoading: false,
+            done: []
         };
     },
     methods: {
-        submit(id) {
-            this.items.productID = id;
-            this.$swal('Hello Vue world!!!');
-            console.log(this.items);
+        ...mapActions({
+            cart: "restaurants/addItemToCart"
+        }),
+        submit(id, index) {
+            this.isLoading = true;
+            if (this.user.authenticated) {
+                setTimeout(() => {
+                    this.cart({
+                        payload: {
+                            productID: id
+                        }
+                    }).then(() => {
+                        this.isLoading = false;
+                        this.done[index] = true;
+                    });
+                }, 700);
+            } else {
+                this.$router.replace({ name: "Login" });
+            }
         }
+    },
+    computed: {
+        ...mapGetters({
+            user: "auth/user"
+        })
     }
 };
 </script>

@@ -54,12 +54,17 @@
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody
+                                        v-for="(item, index) in items"
+                                        :key="item.id"
+                                    >
                                         <tr>
                                             <th scope="row">
                                                 <div class="p-2">
                                                     <img
-                                                        src="https://images-na.ssl-images-amazon.com/images/I/31MyNsVdCWL._AC_.jpg"
+                                                        :src="
+                                                            item.product.image
+                                                        "
                                                         alt=""
                                                         width="70"
                                                         class="img-fluid rounded shadow-sm"
@@ -71,29 +76,54 @@
                                                             <a
                                                                 href="#"
                                                                 class="text-dark d-inline-block"
-                                                                >Gray Nike
-                                                                running shoe</a
+                                                                >{{
+                                                                    item.product
+                                                                        .name
+                                                                }}</a
                                                             >
                                                         </h5>
-                                                        <span
-                                                            class="text-muted font-weight-normal font-italic"
-                                                            >Category:
-                                                            Fashion</span
-                                                        >
                                                     </div>
                                                 </div>
                                             </th>
 
                                             <td class="align-middle">
-                                                <strong>$79.00</strong>
+                                                <strong
+                                                    >EGP
+                                                    {{
+                                                        item.product.price
+                                                    }}</strong
+                                                >
                                             </td>
                                             <td class="align-middle">
-                                                <input type="number" class="form-control w-25" name="" id="">
+                                                <input
+                                                    type="number"
+                                                    class="form-control w-25"
+                                                    min="1"
+                                                    v-model="qty[index]"
+                                                />
                                             </td>
                                             <td class="align-middle">
-                                                <a href="#" class="text-dark"
-                                                    ><i class="fa fa-trash"></i
-                                                ></a>
+                                                <VueLoadingButton
+                                                    :styled="false"
+                                                    type="submit"
+                                                    class="btn btn-danger btn-sm"
+                                                    :loading="isLoading"
+                                                    @click.native="
+                                                        submit(item.id, index)
+                                                    "
+                                                >
+                                                    <span v-show="!done[index]"
+                                                        ><i
+                                                            class="fa fa-trash"
+                                                        ></i
+                                                    ></span>
+                                                    <span v-show="done[index]"
+                                                        >Deleted
+                                                        <i
+                                                            class="fa fa-check"
+                                                        ></i
+                                                    ></span>
+                                                </VueLoadingButton>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -102,59 +132,8 @@
                             <!-- End -->
                         </div>
                     </div>
-
                     <div class="row py-5 p-4 bg-white rounded shadow-sm">
-                        <div class="col-lg-6">
-                            <div
-                                class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold"
-                            >
-                                Coupon code
-                            </div>
-                            <div class="p-4">
-                                <p class="font-italic mb-4">
-                                    If you have a coupon code, please enter it
-                                    in the box below
-                                </p>
-                                <div
-                                    class="input-group mb-4 border rounded-pill p-2"
-                                >
-                                    <input
-                                        type="text"
-                                        placeholder="Apply coupon"
-                                        aria-describedby="button-addon3"
-                                        class="form-control border-0"
-                                    />
-                                    <div class="input-group-append border-0">
-                                        <button
-                                            id="button-addon3"
-                                            type="button"
-                                            class="btn btn-dark px-4 rounded-pill"
-                                        >
-                                            <i class="fa fa-gift mr-2"></i>Apply
-                                            coupon
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold"
-                            >
-                                Instructions for seller
-                            </div>
-                            <div class="p-4">
-                                <p class="font-italic mb-4">
-                                    If you have some information for the seller
-                                    you can leave them in the box below
-                                </p>
-                                <textarea
-                                    name=""
-                                    cols="30"
-                                    rows="2"
-                                    class="form-control"
-                                ></textarea>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div
                                 class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold"
                             >
@@ -171,20 +150,20 @@
                                     >
                                         <strong class="text-muted"
                                             >Order Subtotal </strong
-                                        ><strong>$390.00</strong>
+                                        ><strong>EGP {{ subTotal }} </strong>
                                     </li>
                                     <li
                                         class="d-flex justify-content-between py-3 border-bottom"
                                     >
                                         <strong class="text-muted"
                                             >Shipping and handling</strong
-                                        ><strong>$10.00</strong>
+                                        ><strong>EGP 20 </strong>
                                     </li>
                                     <li
                                         class="d-flex justify-content-between py-3 border-bottom"
                                     >
                                         <strong class="text-muted">Tax</strong
-                                        ><strong>$0.00</strong>
+                                        ><strong>None</strong>
                                     </li>
                                     <li
                                         class="d-flex justify-content-between py-3 border-bottom"
@@ -193,14 +172,14 @@
                                             >Total</strong
                                         >
                                         <h5 class="font-weight-bold">
-                                            $400.00
+                                            EGP {{ total }}
                                         </h5>
                                     </li>
                                 </ul>
                                 <a
                                     href="#"
-                                    class="btn btn-dark rounded-pill py-2 btn-block"
-                                    >Procceed to checkout</a
+                                    class="btn btn-success rounded-pill py-2 btn-lg btn-block"
+                                    >Submit</a
                                 >
                             </div>
                         </div>
@@ -212,46 +191,61 @@
 </template>
 <script>
 import { mapGetters, mapActions } from "vuex";
+import VueLoadingButton from "vue-loading-button";
 
 export default {
-    // data() {
-    //     return {
-    //         keyword: "",
-    //         hasfocus: false
-    //     };
-    // },
-    // computed: {
-    //     ...mapGetters({
-    //         search: "home/search"
-    //     })
-    // },
-    // watch: {
-    //     keyword(after, before) {
-    //         this.$store.dispatch("home/search", {
-    //             payload: {
-    //                 keyword: this.keyword
-    //             }
-    //         });
-    //     }
-    // },
-    // methods: {
-    //     ...mapActions({
-    //         restaurant: "restaurants/restaurant"
-    //     }),
-    //     focus(value) {
-    //         setTimeout(()=> {
-    //         this.hasfocus = value;
-    //         },1000)
-    //     },
-    //     toRestaurant(id , slug) {
-    //         this.restaurant({
-    //             payload: {
-    //                 id: id
-    //             }
-    //         }).then(()=>{
-    //             this.$router.push({  name: "Restaurant" , params : {id : id , slug : slug} });
-    //         })
-    //     }
-    // }
+    data() {
+        return {
+            isLoading: false,
+            done: [],
+            qty: []
+        };
+    },
+    components: {
+        VueLoadingButton
+    },
+    computed: {
+        ...mapGetters({
+            items: "cart/getItems"
+        }),
+        subTotal() {
+            let total = 0;
+            if (this.items) {
+                Object.values(this.items).forEach((item, index) => {
+                    if (this.qty[index]) {
+                        total += item.product.price * this.qty[index];
+                    } else {
+                        total += item.product.price;
+                    }
+                });
+
+                return total;
+            }
+        },
+        total() {
+            return this.subTotal + 20;
+        }
+    },
+    methods: {
+        ...mapActions({
+            cart: "cart/deleteCartItems"
+        }),
+        submit(id, index) {
+            this.isLoading = true;
+            setTimeout(() => {
+                this.cart({
+                    payload: {
+                        id: id
+                    }
+                }).then(() => {
+                    this.isLoading = false;
+                    this.done[index] = true;
+                });
+            },700);
+        }
+    },
+    mounted() {
+        this.$store.dispatch("cart/getCartItems");
+    }
 };
 </script>

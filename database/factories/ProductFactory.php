@@ -26,11 +26,9 @@ class ProductFactory extends Factory
             'name' => $this->faker->sentence(3),
             'image' => $this->faker->randomElement(
                 [
-
-                    'https://freepikpsd.com/wp-content/uploads/2019/10/cafe-food-png-5-1-Transparent-Images.png',
-                    'https://lh3.googleusercontent.com/proxy/C5I8avxccEXB08Ohn_PMwzX5eXFgxL697L50Q7P2uY3o11CG7KD3n3I1KCRuKYiZ77e2BssKb6uelRCKiMau2e1FZhUoefV8IA6-IdQ-HCeKllIZGOYD3A',
-                    'https://img.pngio.com/download-grilled-food-png-file-free-transparent-png-images-grilled-food-png-1348_899.png',
-
+                    'https://i.ibb.co/jwnGM79/unnamed.png',
+                    'https://i.ibb.co/phcNPmQ/download-grilled-food-png-file-free-transparent-png-images-grilled-food-png-1348-899.png',
+                    'https://i.ibb.co/L9WcbrM/cafe-food-png-5-1-Transparent-Images.png',
                 ]
             ),
             'price' => $this->faker->numberBetween(100, 150),

@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import auth from '../app/auth/vuex'
 import restaurants from '../app/restaurants/vuex'
 import home from '../app/home/vuex'
+import cart from '../app/cart/vuex'
 
 Vue.use(Vuex)
 
@@ -11,6 +12,7 @@ export default new Vuex.Store({
         auth: auth,
         restaurants: restaurants,
         home: home,
+        cart: cart,
     },
 
 })

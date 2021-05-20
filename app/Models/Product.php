@@ -12,6 +12,9 @@ class Product extends Model
 
     protected $table = 'products';
     public $timestamps = true;
+    protected $casts = [
+        'price' => 'float',
+    ];
 
     use SoftDeletes, HasFactory;
 
@@ -27,7 +30,7 @@ class Product extends Model
     {
         return $this->belongsToMany('App\Models\Order');
     }
-    
+
     public function carts()
     {
         return $this->hasMany('App\Models\Cart');

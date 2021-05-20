@@ -136,7 +136,7 @@
 
 <script>
 import product from "./Products.vue";
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
     components: {
         "product-cards": product
@@ -153,6 +153,8 @@ export default {
                 id: this.id
             }
         });
-    }
+    },
+
+
 };
 </script>

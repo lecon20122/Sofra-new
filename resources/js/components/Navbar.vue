@@ -73,7 +73,7 @@
                                         class="text-white"
                                         :to="{ name: 'Cart' }"
                                         ><i class="fa fa-shopping-cart"></i>
-                                        <span class='badge badge-warning' id='lblCartCount'> 5 </span>
+                                        <span  class='badge badge-warning' id='lblCartCount'>  </span>
                                         </router-link></a
                                 >
                             </li>
@@ -116,6 +116,7 @@ export default {
     computed: {
         ...mapGetters({
             user: "auth/user",
+            items: "cart/getItems"
         })
     },
     methods: {

@@ -1,3 +1,6 @@
-export const setResults = (state, results) => {
-    state.results = results
+export const setCartItems = (state, items) => {
+    state.cart.items = items
+}
+export const getDelivery = (state, items) => {
+    state.cart.delivery = items
 }
