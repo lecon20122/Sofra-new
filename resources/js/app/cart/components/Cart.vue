@@ -49,6 +49,16 @@
                                                 <div
                                                     class="py-2 text-uppercase"
                                                 >
+                                                    Notes
+                                                </div>
+                                            </th>
+                                            <th
+                                                scope="col"
+                                                class="border-0 bg-light"
+                                            >
+                                                <div
+                                                    class="py-2 text-uppercase"
+                                                >
                                                     Remove
                                                 </div>
                                             </th>
@@ -73,14 +83,17 @@
                                                         class="ml-3 d-inline-block align-middle"
                                                     >
                                                         <h5 class="mb-0">
-                                                            <a
+                                                            <p
                                                                 href="#"
                                                                 class="text-dark d-inline-block"
-                                                                >{{
-                                                                    item.product
-                                                                        .name
-                                                                }}</a
                                                             >
+                                                                {{
+                                                                    item.product.name.substring(
+                                                                        0,
+                                                                        20
+                                                                    ) + ".."
+                                                                }}
+                                                            </p>
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -97,10 +110,30 @@
                                             <td class="align-middle">
                                                 <input
                                                     type="number"
-                                                    class="form-control w-25"
+                                                    class="form-control"
                                                     min="1"
                                                     v-model="qty[index]"
+                                                    @change="
+                                                        editSubmit(
+                                                            item.id,
+                                                            index
+                                                        )
+                                                    "
                                                 />
+                                            </td>
+                                            <td class="align-middle">
+                                                <textarea
+                                                    class="form-control"
+                                                    id="exampleFormControlTextarea1"
+                                                    rows="2"
+                                                    v-model="notes[index]"
+                                                    @change="
+                                                        editSubmit(
+                                                            item.id,
+                                                            index
+                                                        )
+                                                    "
+                                                ></textarea>
                                             </td>
                                             <td class="align-middle">
                                                 <VueLoadingButton
@@ -109,7 +142,10 @@
                                                     class="btn btn-danger btn-sm"
                                                     :loading="isLoading"
                                                     @click.native="
-                                                        submit(item.id, index)
+                                                        deleteSubmit(
+                                                            item.id,
+                                                            index
+                                                        )
                                                     "
                                                 >
                                                     <span v-show="!done[index]"
@@ -128,10 +164,44 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                <div class="col-lg-12 bg-white rounded">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label
+                                                    for="exampleFormControlTextarea1"
+                                                    >Address</label
+                                                >
+                                                <textarea
+                                                    class="form-control"
+                                                    id="exampleFormControlTextarea1"
+                                                    rows="1"
+                                                    v-model="address"
+                                                ></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label
+                                                    for="exampleFormControlTextarea1"
+                                                    >Notes</label
+                                                >
+                                                <textarea
+                                                    class="form-control"
+                                                    id="exampleFormControlTextarea1"
+                                                    rows="1"
+                                                    v-model="note"
+                                                ></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <!-- End -->
                         </div>
                     </div>
+                    <!-- <div class="row">
+                    </div> -->
                     <div class="row py-5 p-4 bg-white rounded shadow-sm">
                         <div class="col-lg-12">
                             <div
@@ -157,7 +227,7 @@
                                     >
                                         <strong class="text-muted"
                                             >Shipping and handling</strong
-                                        ><strong>EGP 20 </strong>
+                                        ><strong>+ EGP 20 </strong>
                                     </li>
                                     <li
                                         class="d-flex justify-content-between py-3 border-bottom"
@@ -176,11 +246,21 @@
                                         </h5>
                                     </li>
                                 </ul>
-                                <a
-                                    href="#"
-                                    class="btn btn-success rounded-pill py-2 btn-lg btn-block"
-                                    >Submit</a
+                                <VueLoadingButton
+                                    :styled="false"
+                                    type="submit"
+                                    class="btn btn-success"
+                                    :loading="isLoading"
+                                    @click.native="createOrder()"
                                 >
+                                    <span v-show="!isDone"
+                                        ><i class="fa fa-shopping-cart"></i
+                                        >Submit Order</span
+                                    >
+                                    <span v-show="isDone"
+                                        >Order Placed <i class="fa fa-check"></i
+                                    ></span>
+                                </VueLoadingButton>
                             </div>
                         </div>
                     </div>
@@ -192,13 +272,18 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import VueLoadingButton from "vue-loading-button";
+import { isEmpty } from "lodash";
 
 export default {
     data() {
         return {
             isLoading: false,
             done: [],
-            qty: []
+            qty: [],
+            notes: [],
+            address: null,
+            note: null,
+            isDone: false
         };
     },
     components: {
@@ -206,7 +291,8 @@ export default {
     },
     computed: {
         ...mapGetters({
-            items: "cart/getItems"
+            items: "cart/getItems",
+            getProduct: "cart/getProduct"
         }),
         subTotal() {
             let total = 0;
@@ -218,7 +304,6 @@ export default {
                         total += item.product.price;
                     }
                 });
-
                 return total;
             }
         },
@@ -228,9 +313,11 @@ export default {
     },
     methods: {
         ...mapActions({
-            cart: "cart/deleteCartItems"
+            cart: "cart/deleteCartItems",
+            editCart: "cart/editCartItems",
+            newOrder: "cart/newOrder"
         }),
-        submit(id, index) {
+        deleteSubmit(id) {
             this.isLoading = true;
             setTimeout(() => {
                 this.cart({
@@ -239,9 +326,32 @@ export default {
                     }
                 }).then(() => {
                     this.isLoading = false;
-                    this.done[index] = true;
                 });
-            },700);
+            }, 700);
+        },
+        editSubmit(id, index) {
+            this.editCart({
+                payload: {
+                    id: id,
+                    qty: this.qty[index] === null ? 1 : this.qty[index],
+                    notes: this.notes[index] ? this.notes[index] : ""
+                }
+            });
+        },
+        createOrder() {
+            this.isLoading = true;
+            setTimeout(() => {
+                this.newOrder({
+                    payload: {
+                        restaurant_id: this.getProduct.restaurant_id,
+                        notes: this.note,
+                        address: this.address,
+                    }
+                }).then(() => {
+                    this.isLoading = false;
+                    this.isDone = true;
+                });
+            }, 700);
         }
     },
     mounted() {

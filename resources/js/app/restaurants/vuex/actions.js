@@ -102,12 +102,12 @@ export const clearAuth = ({ commit }, token) => {
     setHttpToken(null)
 }
 
-export const addItemToCart = ({ commit , dispatch }, { payload }) => {
+export const addItemToCart = ({ commit, dispatch }, { payload }) => {
     dispatch('checkTokenExists').then((token) => {
         setHttpToken(token)
     });
-
-    return axios.post('api/cart?product_id='+payload.productID).then((response) => {
+    console.log(payload);
+    return axios.post('api/cart?product_id=' + payload.productID).then((response) => {
         console.log(response.data);
     })
 }

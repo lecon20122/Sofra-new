@@ -111,6 +111,7 @@
                             >
                                 <product-cards
                                     :products="restaurant.data.products"
+                                    :restaurant_id="restaurant.data.id"
                                 ></product-cards>
                             </div>
                             <div

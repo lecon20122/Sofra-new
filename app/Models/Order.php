@@ -21,9 +21,9 @@ class Order extends Model
         return $this->belongsTo('App\Models\Restaurant');
     }
 
-    public function client()
+    public function user()
     {
-        return $this->belongsTo('App\Models\Client' , 'client_id');
+        return $this->belongsTo('App\Models\User' , 'user_id');
     }
 
     public function products()

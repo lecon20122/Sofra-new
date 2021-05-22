@@ -27,6 +27,11 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::post('cart', 'App\Http\Controllers\Cart\CartController@newCartItems');
     Route::get('cart-products', 'App\Http\Controllers\Cart\CartController@cartProducts');
     Route::get('cart-delete', 'App\Http\Controllers\Cart\CartController@deleteCartItems');
+    Route::get('cart-edit', 'App\Http\Controllers\Cart\CartController@editCartItems');
+
+    //Order
+    Route::post('order', 'App\Http\Controllers\Order\OrderController@create');
+
 });
 
 //Restaurant-Resources

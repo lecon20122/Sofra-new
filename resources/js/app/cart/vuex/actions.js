@@ -18,7 +18,7 @@ export const getCartItems = ({ commit, dispatch }) => {
     });
     return axios.get('api/cart-products').then((response) => {
         commit("setCartItems" , response.data)
-        commit("getDelivery" , response.data)
+        commit("setProduct" , response.data[0]['product'])
     })
 }
 export const deleteCartItems = ({ commit, dispatch } , {payload}) => {
@@ -28,4 +28,21 @@ export const deleteCartItems = ({ commit, dispatch } , {payload}) => {
     return axios.get('api/cart-delete?id='+payload.id).then((response) => {
         commit("setCartItems" , response.data)
     })
+}
+export const editCartItems = ({ commit, dispatch } , {payload}) => {
+    dispatch('checkTokenExists').then((token) => {
+        setHttpToken(token)
+    });
+    return axios.get('api/cart-edit?id=' + payload.id + '&' + 'notes=' + payload.notes + '&' + 'qty=' + payload.qty).then((response) => {
+        console.log(response.data);
+    });
+}
+
+export const newOrder = ({ commit, dispatch } , {payload}) => {
+    dispatch('checkTokenExists').then((token) => {
+        setHttpToken(token)
+    });
+    return axios.post('api/order?restaurant_id=' + payload.restaurant_id + '&' + 'notes=' + payload.notes + '&' + 'address=' + payload.address).then((response) => {
+        console.log(response.data);
+    });
 }

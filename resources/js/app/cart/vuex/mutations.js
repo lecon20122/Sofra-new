@@ -1,6 +1,6 @@
 export const setCartItems = (state, items) => {
     state.cart.items = items
 }
-export const getDelivery = (state, items) => {
-    state.cart.delivery = items
+export const setProduct = (state, items) => {
+    state.cart.product = items
 }

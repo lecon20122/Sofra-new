@@ -39,15 +39,34 @@
                                     EGP {{ product.price }}
                                 </h4>
                             </div>
+
                             <h6 class="text-success">
                                 <i class="fa fa-clock"></i> Ready in
                                 {{ product.ready_in }} Minutes
                             </h6>
-                            <div class="d-flex flex-column mt-5 pt-5">
+                            <!-- <div class="form-group">
+                                <input
+                                    type="number"
+                                    class="form-control"
+                                    id="exampleFormControlInput1"
+                                    placeholder="Quantity"
+                                    v-model="qty[index]"
+                                />
+                            </div> -->
+                            <!-- <div class="form-group">
+                                <textarea
+                                    class="form-control"
+                                    id="exampleFormControlTextarea1"
+                                    rows="2"
+                                    placeholder="Notes"
+                                    v-model="notes[index]"
+                                ></textarea>
+                            </div> -->
+                            <div class="d-flex flex-column pt-5 align-content-end">
                                 <VueLoadingButton
                                     :styled="false"
                                     type="submit"
-                                    class="btn btn-success"
+                                    class="btn btn-success mt-3"
                                     :loading="isLoading"
                                     @click.native="submit(product.id, index)"
                                     ><span v-show="!done[index]"
@@ -71,12 +90,13 @@ export default {
     components: {
         VueLoadingButton
     },
-    props: ["products"],
+    props: ["products","restaurant_id"],
     data() {
         return {
             productID: null,
             isLoading: false,
-            done: []
+            done: [],
+            notes : [],
         };
     },
     methods: {
@@ -89,7 +109,7 @@ export default {
                 setTimeout(() => {
                     this.cart({
                         payload: {
-                            productID: id
+                            productID: id,
                         }
                     }).then(() => {
                         this.isLoading = false;
