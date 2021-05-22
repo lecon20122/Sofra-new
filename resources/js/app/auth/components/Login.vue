@@ -104,7 +104,8 @@ export default {
                     password: this.password
                 },
                 context: this
-            }).then(() => {
+            })
+            .then(() => {
                 localforage.getItem("intended").then(name => {
                     if (isEmpty(name)) {
                         this.$router.replace({ name: "Home" });

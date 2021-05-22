@@ -2,14 +2,12 @@ import router from './router'
 import store from './vuex'
 import localforage from 'localforage'
 
+
 localforage.config({
     driver: localforage.LOCALSTORAGE,
     storeName: 'Sofra',
     version : 2
 })
-
-
-
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -20,6 +18,7 @@ localforage.config({
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+
 
 /**
  * The following block of code may be used to automatically register your

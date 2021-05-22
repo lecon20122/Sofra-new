@@ -18,35 +18,25 @@
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                 >
-                    <span class="navbar-toggler-icon"></span>
+                    <span ><i class="fa fa-bars text-white"></i></span>
                 </button>
                 <div
                     class="collapse navbar-collapse"
                     id="navbarSupportedContent"
                 >
-                    <ul class="navbar-nav ml-auto ">
+                    <ul class="navbar-nav ml-auto font-size ">
                         <div class="navbar-nav">
                             <li class="nav-item active font-size">
                                 <a class="nav-link"
                                     ><router-link
                                         class="text-white text-decoration-none"
                                         :to="{ name: 'Restaurants' }"
-                                        >كل المطاعم</router-link
+                                        >Restaurants</router-link
                                     ></a
                                 >
                             </li>
                         </div>
                         <div class="navbar-nav" v-if="user.authenticated">
-
-                            <li class="nav-item active">
-                                <a class="nav-link"
-                                    ><router-link
-                                        class="text-white"
-                                        :to="{ name: 'Timeline' }"
-                                        >Timeline</router-link
-                                    ></a
-                                >
-                            </li>
                             <li class="nav-item dropdown">
                                 <a
                                     class="nav-link dropdown-toggle text-white"
@@ -76,6 +66,16 @@
                                         >Logout</a
                                     >
                                 </div>
+                            </li>
+                                                        <li class="nav-item active">
+                                <a class="nav-link"
+                                    ><router-link
+                                        class="text-white"
+                                        :to="{ name: 'Cart' }"
+                                        ><i class="fa fa-shopping-cart"></i>
+                                        <span  class='badge badge-warning' id='lblCartCount'>  </span>
+                                        </router-link></a
+                                >
                             </li>
                         </div>
                         <div
@@ -116,6 +116,7 @@ export default {
     computed: {
         ...mapGetters({
             user: "auth/user",
+            items: "cart/getItems"
         })
     },
     methods: {

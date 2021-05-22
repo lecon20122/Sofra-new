@@ -48,10 +48,10 @@ export const restaurants = ({ commit }) => {
     })
 }
 
-export const restaurant = ({ commit } , { payload}) => {
+export const restaurant = ({ commit }, { payload }) => {
     return axios.get('api/restaurant/', {
         params: {
-            id : payload.id
+            id: payload.id
         }
     }).then((response) => {
         commit('setrestaurantByID', response.data.data)
@@ -101,3 +101,14 @@ export const clearAuth = ({ commit }, token) => {
     commit('setToken', null)
     setHttpToken(null)
 }
+
+export const addItemToCart = ({ commit, dispatch }, { payload }) => {
+    dispatch('checkTokenExists').then((token) => {
+        setHttpToken(token)
+    });
+    console.log(payload);
+    return axios.post('api/cart?product_id=' + payload.productID).then((response) => {
+        console.log(response.data);
+    })
+}
+

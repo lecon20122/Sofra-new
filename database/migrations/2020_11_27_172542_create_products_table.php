@@ -14,7 +14,7 @@ class CreateProductsTable extends Migration {
 			$table->string('name');
 			$table->text('short_description');
 			$table->string('image');
-			$table->decimal('price', 8,2);
+			$table->decimal('price', 8,2)->unsigned();
 			$table->decimal('offer', 8,2)->nullable();
 			$table->string('ready_in');
             $table->integer('restaurant_id')->unsigned();
