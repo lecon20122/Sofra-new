@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use App\Http\Requests\OrderRequest;
+use App\Models\Order;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
@@ -17,9 +18,10 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $myOrder = Order::where('user_id' , $request->user()->id)->with('restaurant' , 'products')->get();
+        return $myOrder;
     }
 
     /**

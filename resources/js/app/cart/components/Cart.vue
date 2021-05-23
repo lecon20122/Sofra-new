@@ -254,8 +254,7 @@
                                     @click.native="createOrder()"
                                 >
                                     <span v-show="!isDone"
-                                        ><i class="fa fa-shopping-cart"></i
-                                        >Submit Order</span
+                                        ><i class="fa fa-shopping-cart"></i> Submit Order</span
                                     >
                                     <span v-show="isDone"
                                         >Order Placed <i class="fa fa-check"></i

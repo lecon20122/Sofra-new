@@ -18,7 +18,7 @@
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                 >
-                    <span ><i class="fa fa-bars text-white"></i></span>
+                    <span><i class="fa fa-bars text-white"></i></span>
                 </button>
                 <div
                     class="collapse navbar-collapse"
@@ -67,14 +67,27 @@
                                     >
                                 </div>
                             </li>
-                                                        <li class="nav-item active">
+                            <li class="nav-item active">
                                 <a class="nav-link"
                                     ><router-link
-                                        class="text-white"
+                                        class="text-white text-decoration-none"
+                                        :to="{ name: 'Order' }"
+                                        >My Orders</router-link
+                                    ></a
+                                >
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link"
+                                    ><router-link
+                                        class="text-white text-decoration-none"
                                         :to="{ name: 'Cart' }"
                                         ><i class="fa fa-shopping-cart"></i>
-                                        <span  class='badge badge-warning' id='lblCartCount'>  </span>
-                                        </router-link></a
+                                        <span
+                                            class="badge badge-warning "
+                                            id="lblCartCount"
+                                        ></span
+                                        >Cart</router-link
+                                    ></a
                                 >
                             </li>
                         </div>
@@ -96,7 +109,8 @@
                                     ><router-link
                                         class="text-white text-decoration-none"
                                         :to="{ name: 'Register' }"
-                                        > سجل الان</router-link
+                                    >
+                                        سجل الان</router-link
                                     ></a
                                 >
                             </li>
