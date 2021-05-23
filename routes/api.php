@@ -31,6 +31,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 
     //Order
     Route::post('order', 'App\Http\Controllers\Order\OrderController@create');
+    Route::post('my-order', 'App\Http\Controllers\Order\OrderController@index');
 
 });
 
