@@ -3,6 +3,13 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\URL;
+
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}
+
 //USER-AUTH
 Route::post('register', 'App\Http\Controllers\Auth\AuthController@register');
 Route::post('login', 'App\Http\Controllers\Auth\AuthController@login');
