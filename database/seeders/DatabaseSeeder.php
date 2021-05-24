@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         \App\Models\District::factory(1)->create();
         \App\Models\Restaurant::factory(50)->has(Product::factory()->count(10))->create();
         \App\Models\PaymentTypes::factory(1)->create();
+        \App\Models\Setting::factory(1)->create();
     }
 }

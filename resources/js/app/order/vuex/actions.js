@@ -18,5 +18,6 @@ export const getOrderItems = ({ commit, dispatch }) => {
     });
     return axios.post('api/my-order').then((response) => {
         commit("setOrderItems" , response.data)
+        commit("setProducts" , response.data[0].products)
     })
 }

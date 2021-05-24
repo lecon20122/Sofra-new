@@ -1,27 +1,37 @@
 <template>
     <div>
         <div class="container py-5">
-            <div class="accordion" id="accordionExample">
+            <div
+                v-for="(order, index) in orders"
+                :key="order.id"
+                class="accordion py-2"
+                id="accordionExample"
+            >
                 <div class="card">
-                    <div class="card-header" id="headingOne">
+                    <div class="card-header" :id="'heading-' + index">
                         <h2 class="mb-0">
                             <button
                                 class="btn btn-link btn-block text-left text-dark text-decoration-none"
                                 type="button"
                                 data-toggle="collapse"
-                                data-target="#collapseOne"
+                                :data-target="'#collapse-' + index"
                                 aria-expanded="true"
-                                aria-controls="collapseOne"
+                                :aria-controls="'collapse-' + index"
                             >
-                                Collapsible Group Item #1
+                                <strong
+                                    >Order # {{ order.id }} | Total :
+                                    <span class="text-success mr-3">
+                                        EGP {{ order.total }}</span
+                                    >more details...</strong
+                                >
                             </button>
                         </h2>
                     </div>
 
                     <div
-                        id="collapseOne"
-                        class="collapse show"
-                        aria-labelledby="headingOne"
+                        :id="'collapse-' + index"
+                        class="collapse"
+                        :aria-labelledby="'heading-' + index"
                         data-parent="#accordionExample"
                     >
                         <div class="card-body">
@@ -79,10 +89,14 @@
                                                                 </th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody
-
-                                                        >
-                                                            <tr>
+                                                        <tbody>
+                                                            <tr
+                                                                v-for="(product,
+                                                                index) in orders[
+                                                                    index
+                                                                ]['products']"
+                                                                :key="index"
+                                                            >
                                                                 <th scope="row">
                                                                     <div
                                                                         class="p-2"
@@ -91,6 +105,9 @@
                                                                             alt=""
                                                                             width="70"
                                                                             class="img-fluid rounded shadow-sm"
+                                                                            :src="
+                                                                                product.image
+                                                                            "
                                                                         />
                                                                         <div
                                                                             class="ml-3 d-inline-block align-middle"
@@ -102,6 +119,13 @@
                                                                                     href="#"
                                                                                     class="text-dark d-inline-block"
                                                                                 >
+                                                                                    {{
+                                                                                        product.name.substring(
+                                                                                            0,
+                                                                                            30
+                                                                                        ) +
+                                                                                            ".."
+                                                                                    }}
                                                                                 </p>
                                                                             </h5>
                                                                         </div>
@@ -112,7 +136,10 @@
                                                                     class="align-middle"
                                                                 >
                                                                     <strong
-                                                                        >EGP</strong
+                                                                        >EGP
+                                                                        {{
+                                                                            product.price
+                                                                        }}</strong
                                                                     >
                                                                 </td>
                                                                 <td
@@ -120,14 +147,31 @@
                                                                 >
                                                                     <p
                                                                         id="exampleFormControlTextarea1"
-                                                                    ></p>
+                                                                    >
+                                                                        {{
+                                                                            product
+                                                                                .pivot
+                                                                                .qty
+                                                                        }}
+                                                                    </p>
                                                                 </td>
                                                                 <td
                                                                     class="align-middle"
                                                                 >
                                                                     <p
                                                                         id="exampleFormControlTextarea1"
-                                                                    ></p>
+                                                                    >
+                                                                        {{
+                                                                            product
+                                                                                .pivot
+                                                                                .notes ===
+                                                                            null
+                                                                                ? product
+                                                                                      .pivot
+                                                                                      .notes
+                                                                                : "No extra notes"
+                                                                        }}
+                                                                    </p>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -144,11 +188,20 @@
                                                                 >
                                                                     <label
                                                                         for="exampleFormControlTextarea1"
-                                                                        >Address</label
+                                                                        ><strong
+                                                                            >Address</strong
+                                                                        ></label
                                                                     >
                                                                     <p
                                                                         id="exampleFormControlTextarea1"
-                                                                    ></p>
+                                                                    >
+                                                                        {{
+                                                                            order.address ===
+                                                                            null
+                                                                                ? order.address
+                                                                                : "please call the restaurant to add your address"
+                                                                        }}
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                             <div
@@ -159,11 +212,20 @@
                                                                 >
                                                                     <label
                                                                         for="exampleFormControlTextarea1"
-                                                                        >Notes</label
+                                                                        ><strong
+                                                                            >Notes</strong
+                                                                        ></label
                                                                     >
                                                                     <p
                                                                         id="exampleFormControlTextarea1"
-                                                                    ></p>
+                                                                    >
+                                                                        {{
+                                                                            order.notes ===
+                                                                            null
+                                                                                ? order.notes
+                                                                                : "no extra notes"
+                                                                        }}
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -184,6 +246,19 @@
                                                     Order summary
                                                 </div>
                                                 <div class="p-4">
+                                                    <i class="fas fa-exclamation-circle text-danger mr-1"></i>
+                                                    <span
+                                                        class="text-right text-danger"
+                                                    >
+                                                        for more details
+                                                        contact
+                                                        <strong>
+                                                        {{
+                                                            order.restaurant
+                                                                .phone
+                                                        }}
+                                                        </strong>
+                                                    </span>
                                                     <ul
                                                         class="list-unstyled mb-4"
                                                     >
@@ -195,7 +270,7 @@
                                                                 >Order Subtotal </strong
                                                             ><strong
                                                                 >EGP
-
+                                                                {{ order.cost }}
                                                             </strong>
                                                         </li>
                                                         <li
@@ -206,7 +281,10 @@
                                                                 >Shipping and
                                                                 handling</strong
                                                             ><strong
-                                                                >+ EGP 20
+                                                                >+ EGP
+                                                                {{
+                                                                    order.delivery_fees
+                                                                }}
                                                             </strong>
                                                         </li>
                                                         <li
@@ -230,6 +308,9 @@
                                                                 class="font-weight-bold"
                                                             >
                                                                 EGP
+                                                                {{
+                                                                    order.total
+                                                                }}
                                                             </h5>
                                                         </li>
                                                     </ul>
@@ -250,13 +331,12 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 export default {
-    // methods: {
-    //     ...mapActions({
-    //         getOrder: "order/getOrderItems",
-    //     })
-
-
-    // },
+    computed: {
+        ...mapGetters({
+            orders: "order/getOrder",
+            products: "order/getProducts"
+        })
+    },
     mounted() {
         this.$store.dispatch("order/getOrderItems");
     }

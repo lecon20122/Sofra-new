@@ -48,6 +48,7 @@
                                         <span class="pr-2"
                                             ><a
                                                 href="#"
+                                                class="text-decoration-none text-dark"
                                                 @click="toRestaurant(result.id , result.slug)"
                                                 ><strong>
                                                     {{ result.name }}</strong
