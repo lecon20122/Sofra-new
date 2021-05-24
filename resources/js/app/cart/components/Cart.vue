@@ -177,7 +177,18 @@
                                                     id="exampleFormControlTextarea1"
                                                     rows="1"
                                                     v-model="address"
+                                                    v-bind:class="{
+                                                        'is-invalid':
+                                                            errors.address
+                                                    }"
                                                 ></textarea>
+                                                <div
+                                                    id="password"
+                                                    class="invalid-feedback"
+                                                    v-if="errors.email"
+                                                >
+                                                    {{ errors.email[0] }}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -254,7 +265,8 @@
                                     @click.native="createOrder()"
                                 >
                                     <span v-show="!isDone"
-                                        ><i class="fa fa-shopping-cart"></i> Submit Order</span
+                                        ><i class="fa fa-shopping-cart"></i>
+                                        Submit Order</span
                                     >
                                     <span v-show="isDone"
                                         >Order Placed <i class="fa fa-check"></i
@@ -282,7 +294,8 @@ export default {
             notes: [],
             address: null,
             note: null,
-            isDone: false
+            isDone: false,
+            errors: []
         };
     },
     components: {
@@ -344,8 +357,9 @@ export default {
                     payload: {
                         restaurant_id: this.getProduct.restaurant_id,
                         notes: this.note,
-                        address: this.address,
-                    }
+                        address: this.address
+                    },
+                    context: this
                 }).then(() => {
                     this.isLoading = false;
                     this.isDone = true;

@@ -38,11 +38,13 @@ export const editCartItems = ({ commit, dispatch } , {payload}) => {
     });
 }
 
-export const newOrder = ({ commit, dispatch } , {payload}) => {
+export const newOrder = ({ commit, dispatch }, { payload, context}) => {
     dispatch('checkTokenExists').then((token) => {
         setHttpToken(token)
     });
     return axios.post('api/order?restaurant_id=' + payload.restaurant_id + '&' + 'notes=' + payload.notes + '&' + 'address=' + payload.address).then((response) => {
-        console.log(response.data);
+        //
+    }).catch((error) => {
+        context.errors = error.response.data.errors
     });
 }
