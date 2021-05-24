@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\URL;
+// use Illuminate\Support\Facades\App;
+// use Illuminate\Support\Facades\URL;
 
-if (App::environment('production')) {
-    URL::forceScheme('https');
-}
+// if (App::environment('production')) {
+//     URL::forceScheme('https');
+// }
 
 
 //USER-AUTH
