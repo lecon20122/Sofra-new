@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ secure_asset('css/styles.css') }}">
         {{-- <link rel="stylesheet" href="{{ secure_asset('css/style.scss') }}"> --}}
+        <base href="https://sofra-food.herokuapp.com/" target="_blank">
         <title>Sofra</title>
     </head>
     <body >
