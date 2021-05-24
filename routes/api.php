@@ -8,6 +8,7 @@ if (App::environment('production')) {
     URL::forceScheme('https');
 }
 
+
 //USER-AUTH
 Route::post('register', 'App\Http\Controllers\Auth\AuthController@register');
 Route::post('login', 'App\Http\Controllers\Auth\AuthController@login');
