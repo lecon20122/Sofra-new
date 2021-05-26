@@ -2,7 +2,7 @@ import { NotFound } from '../components/index'
 
 export default [
     {
-        path: '*',
+        path: '/:catchAll(.*)',
         component: NotFound
     }
 ]

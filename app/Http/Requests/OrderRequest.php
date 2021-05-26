@@ -25,7 +25,6 @@ class OrderRequest extends FormRequest
     {
         return [
             'address' => 'required|max:255',
-            'restaurant_id'=>'required',
             'notes' => 'nullable'
         ];
     }

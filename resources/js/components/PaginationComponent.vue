@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav aria-label="" class="">
+        <nav aria-label="" class="d-block">
             <ul class="pagination text-center">
                 <li class="page-item disabled">
                 </li>

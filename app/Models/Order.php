@@ -14,7 +14,7 @@ class Order extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = array('client_id','address', 'restaurant_id','payment_type_id', 'total', 'net', 'cost' ,  'delivery_fees', 'commission', 'notes', 'state');
+    protected $fillable = array('client_id','address', 'restaurant_id','payment_type_id', 'total', 'net', 'cost' ,  'delivery_fees', 'commission', 'notes', 'state','is_active');
 
     public function restaurant()
     {

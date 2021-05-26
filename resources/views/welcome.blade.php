@@ -6,8 +6,8 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
         {{-- <link rel="stylesheet" href="{{ asset('css/style.scss') }}"> --}}
-        
-        <title>Sofra</title>
+
+        <title>سفرة</title>
     </head>
     <body >
     <div id="app">
@@ -16,6 +16,5 @@
         </div>
     </div>
         <script src="{{ asset('js/app.js') }}"></script>
-        {{-- <script src="{{ asset('js/main.js') }}"></script> --}}
     </body>
 </html>
