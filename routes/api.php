@@ -1,8 +1,5 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-
-
 
 
 //USER-AUTH
