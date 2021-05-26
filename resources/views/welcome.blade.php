@@ -3,10 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
-        <link rel="stylesheet" href="{{ secure_asset('css/styles.css') }}">
-        {{-- <link rel="stylesheet" href="{{ secure_asset('css/style.scss') }}"> --}}
-        <title>Sofra</title>
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        {{-- <link rel="stylesheet" href="{{ asset('css/style.scss') }}"> --}}
+
+        <title>سفرة</title>
     </head>
     <body >
     <div id="app">
@@ -14,7 +15,6 @@
             <application></application>
         </div>
     </div>
-        <script src="{{ secure_asset('js/app.js') }}"></script>
-        {{-- <script src="{{ secure_asset('js/main.js') }}"></script> --}}
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

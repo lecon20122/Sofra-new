@@ -29,7 +29,7 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(OrderRequest $request)
+    public function create(Request $request)
     {
         try {
             DB::beginTransaction();
@@ -68,7 +68,7 @@ class OrderController extends Controller
                 $cost += ($product->price * $item->qty);
 
             }
-            //minimum charge
+        //     //minimum charge
             if ($cost >= $restaurant->min_order) {
                 $total = $cost + $delivery_cost;
                 $commission = settings('commission')->value * $cost;

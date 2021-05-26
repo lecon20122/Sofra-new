@@ -124,7 +124,7 @@ export default {
         focus(value) {
             setTimeout(()=> {
             this.hasfocus = value;
-            },1000)
+            },500)
         },
         toRestaurant(id , slug) {
             this.restaurant({
