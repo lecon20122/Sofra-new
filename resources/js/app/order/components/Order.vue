@@ -18,12 +18,14 @@
                                 aria-expanded="true"
                                 :aria-controls="'collapse-' + index"
                             >
-                                <strong
+                                <stron
                                     >Order # {{ order.id }} | Total :
                                     <span class="text-success mr-3">
-                                        EGP {{ order.total }}</span
-                                    >more details...</strong
-                                >
+                                        EGP {{ order.total }}</span>more details...</stron>
+                                <h6 v-if="order.state === 'pending'" class="float-right text-primary text-uppercase"> <i class="fa fa-clock "></i> Pending</h6>
+                                <h6 v-if="order.state === 'accepted'" class="float-right text-success text-uppercase"> <i class="fa fa-check text-success"></i> Accepted</h6>
+                                <h6 v-if="order.state === 'rejected'" class="float-right text-danger text-uppercase"> <i class="fa fa-times"></i> Rejected</h6>
+                                <h6 v-if="order.state === 'delivered'" class="float-right text-success text-uppercase"> <i class="fa fa-check-circle "></i> Delivered</h6>
                             </button>
                         </h2>
                     </div>
