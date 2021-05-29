@@ -99,8 +99,9 @@
                                 <a class="nav-link"
                                     ><router-link
                                         class="btn btn-outline-light btn-lg"
-                                        :to="{ name: 'Login' }"
-                                        >تسجيل الدخول</router-link
+                                        :to="{ name: 'Register' }"
+                                    >
+                                        Register Now</router-link
                                     ></a
                                 >
                             </li>
@@ -108,9 +109,8 @@
                                 <a class="nav-link"
                                     ><router-link
                                         class="text-white text-decoration-none"
-                                        :to="{ name: 'Register' }"
-                                    >
-                                        سجل الان</router-link
+                                        :to="{ name: 'Login' }"
+                                        >Login</router-link
                                     ></a
                                 >
                             </li>
