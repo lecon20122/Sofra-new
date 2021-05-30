@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\RestaurantController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,11 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('dashboard', function () {
-    return view('layouts.admin');
-});
-Route::get('adminLogin', function () {
-    return view('layouts.admin-login');
-});
+Route::get('admin-auth', [AuthController::class, 'login'])->name('adminLogin');
+Route::post('postLogin', [AuthController::class, 'postLogin'])->name('postLogin');
 
+Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
+    Route::get('dashboard', [AuthController::class, 'index'])->name('dashboard');
 
+    //Restaurants
+    Route::get('restaurant', [RestaurantController::class, 'index'])->name('restaurant-index');
+    
+});

@@ -48,7 +48,7 @@ return [
         ],
 
         'restaurant' => [
-            'driver' => 'jwt',
+            'driver' => 'session',
             'provider' => 'restaurants',
         ],
 
@@ -80,9 +80,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        'restaurants' => [
+        'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Restaurant::class,
+            'model' => App\Models\Admin::class,
         ],
         'restaurants' => [
             'driver' => 'eloquent',
