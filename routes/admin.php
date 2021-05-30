@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Admin\RestaurantController;
+use App\Http\Controllers\Admin\DataTables\RestaurantController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +22,9 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
     Route::get('dashboard', [AuthController::class, 'index'])->name('dashboard');
 
     //Restaurants
-    Route::get('restaurant', [RestaurantController::class, 'index'])->name('restaurant-index');
-    
+    //view
+    Route::get('restaurant', [RestaurantController::class, 'view'])->name('restaurant-view');
+    //view
+    Route::get('restaurant-index', [RestaurantController::class, 'index'])->name('restaurant-index');
+
 });
