@@ -24,6 +24,32 @@
                                         EGP {{ order.total }}</span
                                     >more details...</strong
                                 >
+                                <h6
+                                    v-if="order.state === 'pending'"
+                                    class="float-right text-primary text-uppercase"
+                                >
+                                    <i class="fa fa-clock "></i> Pending
+                                </h6>
+                                <h6
+                                    v-if="order.state === 'accepted'"
+                                    class="float-right text-success text-uppercase"
+                                >
+                                    <i class="fa fa-check text-success"></i>
+                                    Accepted
+                                </h6>
+                                <h6
+                                    v-if="order.state === 'rejected'"
+                                    class="float-right text-danger text-uppercase"
+                                >
+                                    <i class="fa fa-times"></i> Rejected
+                                </h6>
+                                <h6
+                                    v-if="order.state === 'delivered'"
+                                    class="float-right text-success text-uppercase"
+                                >
+                                    <i class="fa fa-check-circle "></i>
+                                    Delivered
+                                </h6>
                             </button>
                         </h2>
                     </div>
@@ -164,12 +190,7 @@
                                                                         {{
                                                                             product
                                                                                 .pivot
-                                                                                .notes ===
-                                                                            null
-                                                                                ? product
-                                                                                      .pivot
-                                                                                      .notes
-                                                                                : "No extra notes"
+                                                                                .notes
                                                                         }}
                                                                     </p>
                                                                 </td>
@@ -197,9 +218,9 @@
                                                                     >
                                                                         {{
                                                                             order.address ===
-                                                                            null
-                                                                                ? order.address
-                                                                                : "please call the restaurant to add your address"
+                                                                            "null"
+                                                                                ? "please call the restaurant to add your address"
+                                                                                : order.address
                                                                         }}
                                                                     </p>
                                                                 </div>
@@ -221,9 +242,9 @@
                                                                     >
                                                                         {{
                                                                             order.notes ===
-                                                                            null
-                                                                                ? order.notes
-                                                                                : "no extra notes"
+                                                                            "null"
+                                                                                ? "No Extra Notes"
+                                                                                : order.notes
                                                                         }}
                                                                     </p>
                                                                 </div>
@@ -246,17 +267,18 @@
                                                     Order summary
                                                 </div>
                                                 <div class="p-4">
-                                                    <i class="fas fa-exclamation-circle text-danger mr-1"></i>
+                                                    <i
+                                                        class="fas fa-exclamation-circle text-danger mr-1"
+                                                    ></i>
                                                     <span
                                                         class="text-right text-danger"
                                                     >
-                                                        for more details
-                                                        contact
+                                                        for more details contact
                                                         <strong>
-                                                        {{
-                                                            order.restaurant
-                                                                .phone
-                                                        }}
+                                                            {{
+                                                                order.restaurant
+                                                                    .phone
+                                                            }}
                                                         </strong>
                                                     </span>
                                                     <ul
@@ -285,6 +307,18 @@
                                                                 {{
                                                                     order.delivery_fees
                                                                 }}
+                                                            </strong>
+                                                        </li>
+                                                        <li
+                                                            class="d-flex justify-content-between py-3 border-bottom"
+                                                        >
+                                                            <strong
+                                                                class="text-muted"
+                                                                >Payment
+                                                                Method</strong
+                                                            ><strong
+                                                                >Cash on
+                                                                Delivery
                                                             </strong>
                                                         </li>
                                                         <li

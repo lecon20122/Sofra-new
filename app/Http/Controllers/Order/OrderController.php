@@ -71,7 +71,7 @@ class OrderController extends Controller
         //     //minimum charge
             if ($cost >= $restaurant->min_order) {
                 $total = $cost + $delivery_cost;
-                $commission = settings('commission')->value * $cost;
+                $commission = settings('commission')->value * $total;
                 $net = $total - $commission;
                 // updating the rest of the calculations
                 $update = $order->update([

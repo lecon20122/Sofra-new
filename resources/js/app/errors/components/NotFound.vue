@@ -1,6 +1,6 @@
 <template>
     <div>
-        <!-- <div class="main">
+         <div class="main">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -126,6 +126,16 @@
                     </g>
                 </g>
             </svg>
-        </div> -->
+        </div>
+        <div class="text-center">
+            <router-link :to="{name : 'Home'}" class="btn btn-primary text-center text-decoration-none text-white">
+                Back Home
+            </router-link>
+        </div>
     </div>
 </template>
+<style >
+body {
+    background-color: white;
+}
+</style>

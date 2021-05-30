@@ -18,7 +18,7 @@ export const getCartItems = ({ commit, dispatch }) => {
     });
     return axios.get('api/cart-products').then((response) => {
         commit("setCartItems" , response.data)
-        commit("setProduct" , response.data[0]['product'])
+        commit("setProduct", isEmpty( response.data[0]['product'] ) ? null : response.data[0]['product'] )
     })
 }
 export const deleteCartItems = ({ commit, dispatch } , {payload}) => {
