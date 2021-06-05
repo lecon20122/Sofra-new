@@ -14,11 +14,11 @@ class CreateOrdersTable extends Migration {
 			$table->integer('restaurant_id')->unsigned();
 			$table->integer('user_id')->unsigned();
 			$table->integer('payment_type_id')->unsigned();
-			$table->decimal('cost', 8,2)->default(0);
-			$table->decimal('net', 8,2)->default(0);
-			$table->decimal('total', 8,2)->default(0);
-			$table->decimal('delivery_fees', 8,2)->default(0);
-			$table->decimal('commission', 8,2)->default(0);
+			$table->decimal('cost', 8,2)->default(0)->nullable();
+			$table->decimal('net', 8,2)->default(0)->nullable();
+			$table->decimal('total', 8,2)->default(0)->nullable();
+			$table->decimal('delivery_fees', 8,2)->default(0)->nullable();
+			$table->decimal('commission', 8,2)->default(0)->nullable();
 			$table->text('notes');
 			$table->string('address');
 			$table->enum('state', array('pending', 'accepted', 'rejected', 'delivered'));
