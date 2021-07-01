@@ -19,26 +19,18 @@ class RestaurantController extends DataTablesController
         return view('admin.app.restaurant.index');
     }
 
-    public function index()
-    {
-        $restaurant =
-            Restaurant::
-            withSum('orders', 'total')
-            ->withSum('orders', 'commission')
-            ->withSum('orders', 'net')
-            ->get($this->getDisplayedColumns());
-
-        // return response()->json([
-        //     'data' => [
-        //         'displayedColumns' => array_values($this->getDisplayedColumns()),
-        //         'records' => $restaurant,
-        //     ]
-        // ]);
-        return $restaurant;
-    }
-
     public function getDisplayedColumns()
     {
-        return ['id', 'name', 'email', 'address', 'phone', 'delivery_fees', 'min_order', 'is_active', 'is_approved'];
+        return ['id','name','email','address','phone','is_approved'];
+    }
+
+    public function getUpdatableColumns()
+    {
+        return ['name', 'email', 'address', 'phone', 'is_approved'];
+    }
+
+    public function CustomizedColumnsNames()
+    {
+        return ['ID'=>'id','Name'=>'name','Email'=>'email','Address'=>'address','Phone'=>'phone','is Approved'=>'is_approved'];
     }
 }

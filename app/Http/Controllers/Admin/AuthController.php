@@ -37,7 +37,7 @@ class AuthController extends Controller
         if (Auth::guard('admin')->attempt($credentials, $remember_me)) {
             return redirect()->route('dashboard');
         } else {
-            return redirect()->back()->withErrors(['error' => 'Information were wrong']);
+            return redirect()->back()->withErrors(['error' => 'Wrong Credentials , please try again']);
         }
     }
 

@@ -1,13 +1,12 @@
     <div class="registration-form">
         <form action="{{ route('postLogin') }}" method="POST">
             @csrf
-            {{-- @include('admin.alerts.errors') --}}
-            @if ($errors->any())
-                <h4>{{ $errors->first() }}</h4>
-            @endif
             <div class="form-icon">
                 <span><i class="fa fa-lock"></i></span>
             </div>
+            @if ($errors->any())
+                <h5 class="text-danger alert">{{ $errors->first() }}</h5>
+            @endif
             <div class="form-group">
                 <input type="text" class="form-control item" id="email" placeholder="Email" name="email">
             </div>

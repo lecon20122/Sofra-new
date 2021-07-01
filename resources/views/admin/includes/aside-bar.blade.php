@@ -39,7 +39,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('orders-view') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Orders</p>
                 </a>
@@ -47,11 +47,10 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('user-view') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Clients
-                <span class="right badge badge-danger">New</span>
               </p>
             </a>
           </li>

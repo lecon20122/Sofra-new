@@ -176,6 +176,7 @@
                                                     class="form-control"
                                                     id="exampleFormControlTextarea1"
                                                     rows="1"
+                                                    required
                                                     v-model="address"
                                                     v-bind:class="{
                                                         'is-invalid':
@@ -185,9 +186,9 @@
                                                 <div
                                                     id="password"
                                                     class="invalid-feedback"
-                                                    v-if="errors.email"
+                                                    v-if="errors.address"
                                                 >
-                                                    {{ errors.email[0] }}
+                                                    {{ errors.address[0] }}
                                                 </div>
                                             </div>
                                         </div>

@@ -18,4 +18,20 @@ class UsersController extends DataTablesController
     {
         return view('admin.app.users.index');
     }
+
+    public function CustomizedColumnsNames()
+    {
+        return ['ID'=>'id', 'Name'=>'name', 'Email'=>'email', 'Address'=>'address', 'Phone'=>'phone'];
+    }
+
+    public function getDisplayedColumns()
+    {
+        return ['id', 'name', 'email', 'address', 'phone'];
+    }
+
+    public function getUpdatableColumns()
+    {
+        return null;
+    }
+
 }
