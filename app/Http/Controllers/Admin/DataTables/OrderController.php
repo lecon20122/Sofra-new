@@ -22,7 +22,7 @@ class OrderController extends DataTablesController
     function getRecords($limit)
     {
 
-        $records =  Order::with(['restaurant' , 'user'])->get(['id', 'restaurant_id', 'user_id','address','cost','total','State','created_at']);
+        $records =  Order::with(['restaurant' , 'user'])->get(['id', 'restaurant_id', 'user_id','address','cost','delivery_fees', 'commission','total','net','state','created_at']);
             foreach ($records as $key => $record) {
 
                 $data[$key] = [
@@ -31,9 +31,12 @@ class OrderController extends DataTablesController
                 'user_id' => $record->user->name,
                 'address' => $record->address,
                 'cost' => $record->cost,
+                'Delivery' => $record->delivery_fees,
                 'total' => $record->total,
-                'State' => $record->State,
-                'created_at' => $record->created_at,
+                'commission' => $record->commission,
+                'net' => $record->net,
+                'state' => $record->state,
+                'created_at' => $record->created_at->diffForHumans(),
                 ];
             }
          return  $data;
@@ -41,12 +44,12 @@ class OrderController extends DataTablesController
 
     public function CustomizedColumnsNames()
     {
-        return ['ID'=>'id','Restaurant' => 'restaurant_id','Client'=> 'user_id','Address'=> 'address', 'Cost'=> 'cost','Total'=> 'total','State'=> 'State','Submitted at'=> 'created_at'];
+        return ['ID'=>'id','Restaurant' => 'restaurant_id','Client'=> 'user_id','Address'=> 'address', 'Cost'=> 'cost','Delivery' => 'delivery_fees','Total'=> 'total', 'Commission' => 'commission','Net' => 'net','State'=>'state','Submitted at'=> 'created_at'];
     }
 
     public function getUpdatableColumns()
     {
-        return null;
+        return ['state' , 'address'];
     }
 
 
