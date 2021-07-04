@@ -21,16 +21,16 @@ class RestaurantController extends DataTablesController
 
     public function getDisplayedColumns()
     {
-        return ['id','name','email','address','phone','is_approved'];
+        return ['id','image','name','email','address','phone','is_approved'];
     }
 
     public function getUpdatableColumns()
     {
-        return ['name', 'email', 'address', 'phone', 'is_approved'];
+        return ['name','image', 'email', 'address', 'phone', 'is_approved'];
     }
 
     public function CustomizedColumnsNames()
     {
-        return ['ID'=>'id','Name'=>'name','Email'=>'email','Address'=>'address','Phone'=>'phone','is Approved'=>'is_approved'];
+        return ['ID'=>'id','Image'=>'image','Name'=>'name','Email'=>'email','Address'=>'address','Phone'=>'phone','is Approved'=>'is_approved'];
     }
 }

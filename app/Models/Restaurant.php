@@ -25,7 +25,7 @@ class Restaurant extends Authenticatable implements JWTSubject
         'remember_token',
     ];
     protected $dates = ['deleted_at'];
-    protected $fillable = array('name',  'pin_code', 'email', 'phone', 'password', 'image', 'is_active', 'district_id', 'min_order', 'delivery_fees', 'is_approved');
+    protected $fillable = array('name', 'address', 'pin_code', 'email', 'phone', 'password', 'image', 'is_active', 'district_id', 'min_order', 'delivery_fees', 'is_approved');
 
     public function district()
     {

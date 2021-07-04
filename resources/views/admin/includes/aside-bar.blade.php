@@ -69,8 +69,32 @@
                   {{-- For Admins Only --}}
                   {{-- For Restaurant Owners --}}
                   @auth('restaurant')
+                  <li class="nav-item">
+                      <a href="{{ route('myStore-view') }}" class="nav-link">
+                          <i class="fa fa-store nav-icon text-primary"></i>
+                          <p>
+                              My Store
+                          </p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="{{ route('myProducts-view') }}" class="nav-link">
+                          <i class="fa fa-utensils nav-icon text-warning"></i>
+                          <p>
+                              My Products
+                          </p>
+                      </a>
+                  </li>
                       <li class="nav-item">
-                          <a href="{{ route('admin-logout') }}" class="nav-link text-danger">
+                          <a href="{{ route('myOrdersView') }}" class="nav-link">
+                              <i class="fa fa-money-check-alt nav-icon text-success"></i>
+                              <p>
+                                  My Orders
+                              </p>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="{{ route('store-logout') }}" class="nav-link text-danger">
                               <i class="nav-icon fa fa-sign-out-alt text-danger"></i>
                               <p>
                                   Logout

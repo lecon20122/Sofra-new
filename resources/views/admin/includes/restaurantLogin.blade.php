@@ -8,10 +8,20 @@
                 <h5 class="text-danger alert">{{ $errors->first() }}</h5>
             @endif
             <div class="form-group">
-                <input type="text" class="form-control item" id="email" placeholder="Email" name="email">
+                <input type="tel" class="form-control item" id="phone" placeholder="Phone Number" name="phone">
+                @error('phone')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="form-group">
                 <input type="password" class="form-control item" id="password" placeholder="Password" name="password">
+                @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-block create-account">Login</button>

@@ -13,6 +13,11 @@ class AuthController extends Controller
     {
         return view('layouts.admin');
     }
+    protected function restaurantIndex()
+    //checking if admin is already login if not will redirect to admin Login
+    {
+        return view('layouts.admin');
+    }
 
     protected function login()
     //checking if admin is already login if not will redirect to admin Login

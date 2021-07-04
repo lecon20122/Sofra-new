@@ -14,6 +14,8 @@ class OrderController extends DataTablesController
         return Order::query();
     }
 
+
+
     function view()
     {
         return view('admin.app.orders.index');

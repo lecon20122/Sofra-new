@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\RestaurantRegisterRequest;
+use App\Models\Restaurant;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +21,7 @@ class RestaurantAuthController extends Controller
     //checking if admin is already login if not will redirect to admin Login
     {
         if (auth('restaurant')->check()) {
-            return redirect()->route('dashboard');
+            return redirect()->route('restaurant-dashboard');
         } else {
             return view('layouts.restaurant-login');
         }
@@ -31,14 +34,20 @@ class RestaurantAuthController extends Controller
 
 
         $credentials = [
-            'email' => $request->input("email"),
-            'phone' => $request->input("phone")
+            'phone' => $request->input("phone"),
+            'password' => $request->input("password"),
         ];
         if (Auth::guard('restaurant')->attempt($credentials, $remember_me)) {
-            return redirect()->route('dashboard');
+            return redirect()->route('restaurant-dashboard');
         } else {
             return redirect()->back()->withErrors(['error' => 'Wrong Credentials , please try again']);
         }
+    }
+
+    public function register(RestaurantRegisterRequest $request)
+    {
+        Restaurant::create($request->validated());
+        return back()->with('success',' Thank you for consider joining Sofra , We will contact you as soon as posable on your phone');
     }
 
     public function logout()

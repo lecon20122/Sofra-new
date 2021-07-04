@@ -28,7 +28,7 @@
                         <div class="navbar-nav">
                             <li class="nav-item active font-size">
                                 <a class="nav-link text-white text-decoration-none"
-                                    href="http://127.0.0.1:8000/restaurant-auth"
+                                    href="http://127.0.0.1:8000/become-a-partner"
                                     >Become a Partner</a
                                 >
                             </li>

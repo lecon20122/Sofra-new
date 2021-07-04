@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Schema;
 abstract class DataTablesController extends Controller
 {
     protected $builder;
+    protected $allowCreation = true;
 
     public function __construct()
     {
@@ -31,26 +32,59 @@ abstract class DataTablesController extends Controller
         return response()->json([
             'data' => [
                 'tableName' => $this->builder->getModel()->getTable(),
-                'displayedColumns' => ($this->CustomizedColumnsNames()) === null ?  array_values($this->getDisplayedColumns()) : $this->CustomizedColumnsNames() ,
+                'displayedColumns' => ($this->CustomizedColumnsNames()) === null ?  array_values($this->getDisplayedColumns()) : $this->CustomizedColumnsNames(),
                 'updatable' => $this->getUpdatableColumns(),
                 'records' => $this->getRecords($request->limit),
+                'allow' => [
+                    'creation' => $this->allowCreation,
+                ]
+
             ]
         ]);
     }
 
-    public function update(Request $request , $id)
+    /**
+     * update
+     *
+     * @param Request $request
+     * @param [type] $id
+     * @return void
+     */
+    public function update(Request $request, $id)
     {
         $this->builder()->find($id)->update($request->only($this->getUpdatableColumns()));
     }
 
+    /**
+     * Storing into Database
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function store(Request $request)
+    {
+        if (!$this->allowCreation) {
+            return;
+        }
+
+        $this->builder()->create($request->only($this->getUpdatableColumns()));
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param [type] $limit
+     * @return void
+     */
     protected function getRecords($limit)
     {
         return $this->builder->limit($limit)->orderBy('id')->get($this->getDisplayedColumns());
     }
 
+
     public function getDisplayedColumns()
     {
-        return array_diff($this->getDatabaseColumns() , $this->builder->getModel()->getHidden());
+        return array_diff($this->getDatabaseColumns(), $this->builder->getModel()->getHidden());
     }
     public function getUpdatableColumns()
     {
@@ -60,7 +94,6 @@ abstract class DataTablesController extends Controller
     protected function getDatabaseColumns()
     {
         return Schema::getColumnListing($this->builder->getModel()->getTable());
-
     }
 
     public function CustomizedColumnsNames()

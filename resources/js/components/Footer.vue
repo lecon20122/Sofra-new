@@ -84,17 +84,17 @@
                     >
                         <!-- Links -->
                         <h6 class="text-uppercase font-weight-bold">
-                            Products
+                            Cities
                         </h6>
                         <hr
-                            class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
-                            style="width: 60px;"
+                            class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto border-bottom"
+                            style="width: 45px;"
                         />
                         <p>
-                            <a href="#!" class="text-white">MDBootstrap</a>
+                            <a href="#" class="text-white text-decoration-none">Cario</a>
                         </p>
-                        <p>
-                            <a href="#!" class="text-white">MDWordPress</a>
+                        <!-- <p>
+                            <a href="#!" class="text-white"></a>
                         </p>
                         <p>
                             <a href="#!" class="text-white">BrandFlow</a>
@@ -103,7 +103,7 @@
                             <a href="#!" class="text-white"
                                 >Bootstrap Angular</a
                             >
-                        </p>
+                        </p> -->
                     </div>
                     <!-- Grid column -->
 
@@ -116,23 +116,27 @@
                             Useful links
                         </h6>
                         <hr
-                            class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
-                            style="width: 60px;"
+                            class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto border-bottom"
+                            style="width: 98px;"
                         />
                         <p>
                             <a href="#!" class="text-white">Your Account</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-white"
-                                >Become an Affiliate</a
+                            <a href="http://127.0.0.1:8000/become-a-partner" class="text-white"
+                                >Become a Partner</a
                             >
                         </p>
                         <p>
-                            <a href="#!" class="text-white">Shipping Rates</a>
+                            <a class="text-white"><router-link
+                                        class="text-white text-decoration-none"
+                                        :to="{ name: 'Restaurants' }"
+                                        >Restaurants</router-link
+                                    ></a>
                         </p>
-                        <p>
+                        <!-- <p>
                             <a href="#!" class="text-white">Help</a>
-                        </p>
+                        </p> -->
                     </div>
                     <!-- Grid column -->
 
@@ -143,19 +147,18 @@
                         <!-- Links -->
                         <h6 class="text-uppercase font-weight-bold">Contact</h6>
                         <hr
-                            class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
-                            style="width: 60px;"
+                            class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto border-bottom"
+                            style="width: 67px;"
                         />
                         <p>
-                            <i class="fas fa-home mr-3"></i> New York, NY 10012,
-                            US
+                            <i class="fas fa-home mr-3"></i> Cairo , Nasr City
                         </p>
                         <p>
                             <i class="fas fa-envelope mr-3"></i>
-                            info@example.com
+                            Sofra@info.com
                         </p>
-                        <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-                        <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+                        <p><i class="fas fa-phone mr-3"></i> + 20 234 567 88</p>
+                        <p><i class="fas fa-print mr-3"></i> + 20 234 567 89</p>
                     </div>
                     <!-- Grid column -->
                 </div>
@@ -164,9 +167,9 @@
             <!-- Footer Links -->
 
             <!-- Copyright -->
-            <div class="footer-copyright text-center py-3 bg-black">
-                © 2020 Copyright:
-                <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+            <div class="footer-copyright text-center py-3 bg-black text-white">
+                © 2021 Copyright:
+                <a href="#" class="text-white"> Sofra.com</a>
             </div>
             <!-- Copyright -->
         </footer>
