@@ -14,7 +14,7 @@ class SearchController extends Controller
         $keyword = $request->keyword;
         // $result = Restaurant::where('name','like','%'.$keyword.'%')->paginate(5);
         // return $result;
-        return RestaurantResource::collection(Restaurant::where('name', 'like', '%' . $keyword . '%')->paginate(5));
+        return RestaurantResource::collection(Restaurant::where('name', 'like', '%' . $keyword . '%')->approved()->paginate(5));
 
     }
 }

@@ -26,8 +26,9 @@ class RestaurantRegisterRequest extends FormRequest
         return [
             'name' => 'required|max:255|unique:restaurants,name',
             'email' => 'required|max:255|email|unique:restaurants,email',
-            'password' => 'required|min:6',
+            'password' => 'required|min:6|confirmed',
             'phone' => 'required|min:8',
+            'address' => 'required',
         ];
     }
 }

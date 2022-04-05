@@ -31,6 +31,7 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+Vue.component('data-table', require('./components/DataTable.vue').default);
 Vue.component('application', require('./components/App.vue').default);
 Vue.component('navbar', require('./components/Navbar.vue').default);
 Vue.component('footer-bar', require('./components/Footer.vue').default);

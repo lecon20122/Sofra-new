@@ -13,6 +13,11 @@ class AuthController extends Controller
     {
         return view('layouts.admin');
     }
+    protected function restaurantIndex()
+    //checking if admin is already login if not will redirect to admin Login
+    {
+        return view('layouts.admin');
+    }
 
     protected function login()
     //checking if admin is already login if not will redirect to admin Login
@@ -37,10 +42,15 @@ class AuthController extends Controller
         if (Auth::guard('admin')->attempt($credentials, $remember_me)) {
             return redirect()->route('dashboard');
         } else {
-            return redirect()->back()->withErrors(['error' => 'Information were wrong']);
+            return redirect()->back()->withErrors(['error' => 'Wrong Credentials , please try again']);
         }
     }
 
-
+    public function logout()
+    {
+        $logout = auth('admin');
+        $logout->logout();
+        return redirect()->route('adminLogin');
+    }
 
 }

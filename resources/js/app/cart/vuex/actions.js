@@ -34,7 +34,7 @@ export const editCartItems = ({ commit, dispatch } , {payload}) => {
         setHttpToken(token)
     });
     return axios.get('api/cart-edit?id=' + payload.id + '&' + 'notes=' + payload.notes + '&' + 'qty=' + payload.qty).then((response) => {
-        console.log(response.data);
+        
     });
 }
 

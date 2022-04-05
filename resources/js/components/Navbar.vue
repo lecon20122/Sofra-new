@@ -27,6 +27,12 @@
                     <ul class="navbar-nav ml-auto font-size ">
                         <div class="navbar-nav">
                             <li class="nav-item active font-size">
+                                <a class="nav-link text-white text-decoration-none"
+                                    href="http://127.0.0.1:8000/become-a-partner"
+                                    >Become a Partner</a
+                                >
+                            </li>
+                            <li class="nav-item active font-size">
                                 <a class="nav-link"
                                     ><router-link
                                         class="text-white text-decoration-none"
@@ -36,6 +42,7 @@
                                 >
                             </li>
                         </div>
+                        <!-- if user authenticated -->
                         <div class="navbar-nav" v-if="user.authenticated">
                             <li class="nav-item dropdown">
                                 <a
@@ -90,7 +97,9 @@
                                     ></a
                                 >
                             </li>
-                        </div>
+                        </div><!-- if user authenticated -->
+
+                        <!-- if user not authenticated -->
                         <div
                             class="navbar-nav font-size"
                             v-if="!user.authenticated"
@@ -98,7 +107,7 @@
                             <li class="nav-item active">
                                 <a class="nav-link"
                                     ><router-link
-                                        class="btn btn-outline-light btn-lg"
+                                        class="text-white text-decoration-none"
                                         :to="{ name: 'Register' }"
                                     >
                                         Register Now</router-link
@@ -108,13 +117,13 @@
                             <li class="nav-item active">
                                 <a class="nav-link"
                                     ><router-link
-                                        class="text-white text-decoration-none"
+                                        class="btn btn-outline-light btn-lg"
                                         :to="{ name: 'Login' }"
                                         >Login</router-link
                                     ></a
                                 >
                             </li>
-                        </div>
+                        </div><!-- if user not authenticated -->
                     </ul>
                 </div>
             </div>

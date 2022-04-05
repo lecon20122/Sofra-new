@@ -19,7 +19,7 @@ class Product extends Model
     use SoftDeletes, HasFactory;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = array('name', 'short_describtion', 'image', 'price', 'offer', 'ready_in', 'restaurant_id');
+    protected $fillable = array('name', 'short_description', 'image', 'price', 'offer', 'ready_in', 'restaurant_id');
 
     public function restaurant()
     {

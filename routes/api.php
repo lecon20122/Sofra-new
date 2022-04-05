@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -6,11 +7,6 @@ use Illuminate\Support\Facades\Route;
 Route::post('register', 'App\Http\Controllers\Auth\AuthController@register');
 Route::post('login', 'App\Http\Controllers\Auth\AuthController@login');
 Route::post('logout', 'App\Http\Controllers\Auth\AuthController@logout');
-
-//Restaurant auth
-Route::post('restaurant-register', 'App\Http\Controllers\Auth\RestaurantAuthController@register');
-Route::post('restaurant-login', 'App\Http\Controllers\Auth\RestaurantAuthController@login');
-Route::post('restaurant-logout', 'App\Http\Controllers\Auth\RestaurantAuthController@logout');
 
 Route::group(['middleware' => 'auth:restaurant'], function () {
     Route::get('restaurant-me', 'App\Http\Controllers\Auth\RestaurantAuthController@user');
@@ -31,7 +27,6 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     //Order
     Route::post('order', 'App\Http\Controllers\Order\OrderController@create');
     Route::post('my-order', 'App\Http\Controllers\Order\OrderController@index');
-
 });
 
 //Restaurant-Resources

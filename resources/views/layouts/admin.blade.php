@@ -9,17 +9,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Starter</title>
+  <title>Sofra | Administration</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{ asset('admin/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('admin/css/adminlte.min.css') }}">
   <!-- Google Font: Source Sans Pro -->
- <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini sidebar-collapse">
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -34,7 +34,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <div class="content-wrapper">
     <!-- Main content -->
     <div class="content">
-      <div class="container-fluid">
+      <div class="container-fluid" id="app">
             @yield('content')
       </div><!-- /.container-fluid -->
     </div>
@@ -47,7 +47,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('admin/js/adminlte.min.js') }}"></script>
 </body>
